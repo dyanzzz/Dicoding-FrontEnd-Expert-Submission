@@ -1,0 +1,140 @@
+.posts {
+	display: grid;
+	grid-row-gap: 16px;
+}
+
+@media screen and (max-width: 559px) {
+	
+	.headline__content {
+		padding: 1px 1px;
+	}
+
+	.headline__title {
+		font-size: 16px;
+		font-weight: 500;
+		padding-left: 10px;
+	}
+	
+	.headline__description {
+		font-size: 10px;
+		margin-top: 6px;
+		padding-left: 10px;
+	}
+	
+	.headline__button {
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		margin-top: 14px;
+		margin-left: 24px;
+		cursor: pointer;
+		padding: 8px 16px;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		background-color: #344955;
+		transition: opacity 0.3s;
+	}
+
+	.nav {
+		z-index: 10;
+		background-color: #344955;
+		width: 250px;
+		position: fixed;
+
+		-webkit-transform: translate(-300px, 0);
+		transform: translate(-300px, 0);
+
+		transition: transform 0.3s ease;
+	}
+
+	.open {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+
+	.nav__item {
+		display: list-item;
+		
+		width: 100%;
+		text-align: left;
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.headline__content {
+			padding: 16px 16px;
+	}
+
+	.headline__title {
+			font-size: 28px;
+	}
+
+	.headline__description {
+			font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 560px) {
+	.header__menu {
+			display: none;
+	}
+}
+
+@media screen and (min-width: 650px) {
+	.headline__content {
+			margin: 0 auto;
+			max-width: 650px;
+	}
+
+	.post-item__content {
+			padding: 16px 32px 32px 32px;
+	}
+
+	.post-item__title {
+			font-size: 18px;
+	}
+
+	.post-item__description {
+			font-size: 14px;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	.posts {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 10px;
+		grid-row-gap: 16px;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.nav__list {
+			max-width: 800px;
+			margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.head {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 16px;
+	}
+
+	.headline__content {
+		padding: 14px 32px;
+	}
+
+	.posts {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	main {
+		max-width: 1200px;
+	}
+}
