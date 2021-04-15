@@ -35,8 +35,12 @@ data.restaurants.forEach((restaurant) => {
 					<div class="post-item__rate">Rate ${restaurant.rating}</div>
 					<div class="post-item__city">${restaurant.city}</div>
 				</div>
-				<h1 class="post-item__title"><a href="/detail/${restaurant.id}" target="_blank">${restaurant.name}</a></h1>
-				<p class="post-item__description">${limitDescription(restaurant.description, 200)}</p>
+				<a class="post-item__title__anchor" href="/detail/${restaurant.id}" target="_blank">
+					<h1 class="post-item__title">
+						${restaurant.name}
+					</h1>
+				</a>
+				<p class="post-item__description">${restaurant.description}</p>
 				<button class="headline__button">Read More</button>
 			</div>
 		</article>

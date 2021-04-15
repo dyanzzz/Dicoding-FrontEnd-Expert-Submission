@@ -195,8 +195,8 @@ main {
 	width: 100%;
 	padding: 10px 0;
 	position: absolute;
-	bottom: 0px;
-	left: 0px;
+	bottom: 0;
+	left: 0;
 	color: #fff;
 }
 
@@ -302,6 +302,9 @@ main {
 	font-size: 18px;
 	margin-top: 5px;
 	transition: 0.3s opacity;
+	box-sizing: border-box;
+	min-height: 44px;
+	min-width: 44px;
 }
 
 .post-item__title:hover {
@@ -310,15 +313,20 @@ main {
 	color: #FAAB1A;
 }
 
-.post-item__title a {
+.post-item__title__anchor {
 	text-decoration: none;
 	color: inherit;
 }
 
 .post-item__description {
-	margin-top: 16px;
 	font-size: 14px;
 	line-height: 1.5em;
+	/* pembatasan jumlah karakter  */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 5; /* number of lines to show */
+	-webkit-box-orient: vertical;
 }
 
 /*
