@@ -60,10 +60,13 @@ body {
 
 .header__menu {
 	font-size: 32px;
-	margin: 10px;
 	display: block;
 	cursor: pointer;
 	color: #fff;
+	box-sizing: border-box;
+	min-width: 44px;
+	min-height: 44px;
+	text-align: center;
 }
 
 /* 
@@ -210,7 +213,7 @@ main {
 .headline__button {
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	text-transform: uppercase;
-	margin-top: 24px;
+	margin-top: 12px;
 	cursor: pointer;
 	padding: 8px 16px;
 	color: white;
@@ -218,6 +221,9 @@ main {
 	border-radius: 5px;
 	background-color: #344955;
 	transition: opacity 0.3s;
+	box-sizing: border-box;
+	min-width: 44px;
+	min-height: 44px;
 }
 
 .headline__button:hover {
