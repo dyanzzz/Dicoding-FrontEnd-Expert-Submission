@@ -1,49 +1,22 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../styles/main.css';
 import '../styles/responsive.css';
-const data = require("../DATA.json");
+import App from './views/app';
+import SwRegister from './utils/sw-register';
+import NotificationHelper from '../scripts/utils/notification-helper';
 
-console.log('Hello Coders! :)');
-
-const menu = document.querySelector('#menu');
-const hero = document.querySelector('.hero');
-const main = document.querySelector('main');
-const drawer = document.querySelector('#drawer');
-const postsGrid = document.querySelector('.posts');
-
-menu.addEventListener('click', function(event){
-	drawer.classList.toggle('open');
-	
-	event.stopPropagation();
+const app = new App({
+	button: document.querySelector('#hamburgerButton'),
+	drawer: document.querySelector('#navigationDrawer'),
+	content: document.querySelector('#mainContent')
 });
 
-hero.addEventListener('click', function(){
-	drawer.classList.remove('open');
+window.addEventListener('hashchange', () => {
+	app.renderPage();
 });
 
-main.addEventListener('click', function(){
-	drawer.classList.remove('open');
+window.addEventListener('load', () => {
+	app.renderPage();
+	SwRegister();
+	NotificationHelper.init();
 });
-
-let posts = '';
-data.restaurants.forEach((restaurant) => {
-	posts += `
-		<article class="post-item">
-			<img class="post-item__thumbnail" src="${restaurant.pictureId}" alt="${restaurant.name}">
-			<div class="post-item__content">
-				<div class="post-item__tag">
-					<div class="post-item__rate">Rate ${restaurant.rating}</div>
-					<div class="post-item__city">${restaurant.city}</div>
-				</div>
-				<h1 class="post-item__title"><a href="/detail/${restaurant.id}" target="_blank">${restaurant.name}</a></h1>
-				<p class="post-item__description">${limitDescription(restaurant.description, 200)}</p>
-				<button class="headline__button">Read More</button>
-			</div>
-		</article>
-	`;
-});
-postsGrid.innerHTML = posts;
-
-function limitDescription(text, count){
-	return text.slice(0, count) + (text.length > count ? "..." : "");
-}

@@ -1,0 +1,1 @@
+{"name":"restaurant-apps","version":"1.0.0","dependencies":{"idb":{"version":"6.0.0"},"regenerator-runtime":{"version":"0.13.7"},"serviceworker-webpack-plugin":{"version":"1.0.1","dependencies":{"minimatch":{"version":"3.0.4","dependencies":{"brace-expansion":{"version":"1.1.11","dependencies":{"balanced-match":{"version":"1.0.2"},"concat-map":{"version":"0.0.1"}}}}}}}}}
