@@ -20,7 +20,7 @@ const Favorite = {
 			resturantsContainer.innerHTML += createLatestContent(resturant);
 		});
 	},
-	
+
 };
 
 export default Favorite;

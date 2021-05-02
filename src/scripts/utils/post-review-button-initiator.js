@@ -1,15 +1,14 @@
-import RestaurantResource from "../data/restaurant-source";
+import RestaurantResource from '../data/restaurant-source';
 import NotificationHelper from './notification-helper';
 
 const PostReviewButtonInitiator = {
 	async init({ formReview }) {
-
 		await RestaurantResource.reviewRestaurant(formReview);
 
 		const reviewContainer = document.querySelector('.detail-review');
 		const options = { year: 'numeric', month: 'long', day: 'numeric' };
 		const date = new Date().toLocaleDateString('id-ID', options);
-		
+
 		const newReview = `
 			<div class="row">
 				<div class="side">
@@ -28,13 +27,13 @@ const PostReviewButtonInitiator = {
 	},
 
 	_onMessageHandler(review) {
-    NotificationHelper.sendNotification({
-      title: `Thanks ${review.name} for your review`,
+		NotificationHelper.sendNotification({
+			title: `Thanks ${review.name} for your review`,
 			options: {
-        body: review.review,
-      },
-    });
-  },
+				body: review.review,
+			},
+		});
+	},
 
 };
 

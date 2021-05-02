@@ -2,13 +2,13 @@ import 'regenerator-runtime';
 import '../styles/main.css';
 import '../styles/responsive.css';
 import App from './views/app';
-import SwRegister from './utils/sw-register';
+import swRegister from './utils/sw-register';
 import NotificationHelper from '../scripts/utils/notification-helper';
 
 const app = new App({
 	button: document.querySelector('#hamburgerButton'),
 	drawer: document.querySelector('#navigationDrawer'),
-	content: document.querySelector('#mainContent')
+	content: document.querySelector('#mainContent'),
 });
 
 window.addEventListener('hashchange', () => {
@@ -17,6 +17,6 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
 	app.renderPage();
-	SwRegister();
+	swRegister();
 	NotificationHelper.init();
 });

@@ -1,5 +1,9 @@
 import CONFIG from '../../globals/config';
 
+function limitDescription(text, count) {
+	return text.slice(0, count) + (text.length > count ? '...' : '');
+}
+
 const createLatestContent = (restaurant) => `
 	<article class="post-item">
 		<img class="post-item__thumbnail" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_M_URL + '/' + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}">
@@ -8,7 +12,7 @@ const createLatestContent = (restaurant) => `
 				<div class="post-item__rate">Rate ${restaurant.rating}</div>
 				<div class="post-item__city">${restaurant.city}</div>
 			</div>
-			<h1 class="post-item__title"><a href="/#/detail/${restaurant.id}" >${restaurant.name}</a></h1>
+			<a class="post-item__title__anchor" href="/#/detail/${restaurant.id}" >${restaurant.name}</a>
 			<p class="post-item__description">${limitDescription(restaurant.description, 200)}</p>
 		</div>
 	</article>
@@ -32,11 +36,11 @@ const createDetailPostContent = (restaurant) => `
 		<h4>Category</h4>
 		<p>
 			<ul class="tags">
-				${restaurant.categories.map(category => `
+				${restaurant.categories.map((category) => `
 					<li>
 						<div class="tag">${category.name}</div>
 					</li>
-				`).join("")}
+				`).join('')}
 			</ul>
 		</p>
 		
@@ -55,21 +59,21 @@ const createDetailPostContentOverview = (restaurant) => `
 	<h3>Foods</h3>
 	<p>
 		<ul class="tags">
-			${restaurant.menus.foods.map(food => `
+			${restaurant.menus.foods.map((food) => `
 			<li>
 				<div class="tag">${food.name}</div>
 			</li>
-			`).join("")}
+			`).join('')}
 		</ul>
 	</p>
 	<h3>Drinks</h3>
 	<p>
 		<ul class="tags">
-			${restaurant.menus.drinks.map(drink => `
+			${restaurant.menus.drinks.map((drink) => `
 			<li>
 				<div class="tag">${drink.name}</div>
 			</li>
-			`).join("")}
+			`).join('')}
 		</ul>
 	</p>
 `;
@@ -104,7 +108,7 @@ const createFormReview = (restaurant) => `
 	</p>
 
 	<p class="detail-review">
-		${restaurant.customerReviews.reverse().map(review => `
+		${restaurant.customerReviews.reverse().map((review) => `
 			<div class="row">
 				<div class="side">
 					<i class="fa fa-check" aria-hidden="true"></i> ${review.name}
@@ -116,25 +120,21 @@ const createFormReview = (restaurant) => `
 					${review.date}
 				</div>
 			</div>
-		`).join("")}
+		`).join('')}
 	</p>
 `;
 
 const createLikeButtonTemplate = () => `
 	<button aria-label="like this movie" id="likeButton" class="like">
-		<i class="fa fa-heart-o" aria-hidden="true"></i>
+		<i class="far fa-heart" aria-hidden="true"></i>
 	</button>
 `;
 
 const createLikedButtonTemplate = () => `
 	<button aria-label="unlike this movie" id="likeButton" class="like">
-		<i class="fa fa-heart" aria-hidden="true"></i>
+		<i class="fas fa-heart" aria-hidden="true"></i>
 	</button>
 `;
-
-function limitDescription(text, count){
-	return text.slice(0, count) + (text.length > count ? "..." : "");
-}
 
 export {
 	createLatestContent,
@@ -142,5 +142,5 @@ export {
 	createDetailPostContentOverview,
 	createFormReview,
 	createLikeButtonTemplate,
-	createLikedButtonTemplate
-}
+	createLikedButtonTemplate,
+};

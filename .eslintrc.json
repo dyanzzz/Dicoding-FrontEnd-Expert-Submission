@@ -12,9 +12,19 @@
         "sourceType": "module"
     },
     "rules": {
-			"require-jsdoc" : 0,
-			"indent" : [
-				"error", "space"
-			]
+        "indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "max-len": ["error", { "code": 250, "tabWidth": 4 }],
+        "require-jsdoc": ["error", {
+            "require": {
+                "FunctionDeclaration": false,
+                "MethodDefinition": false,
+                "ClassDeclaration": false,
+                "ArrowFunctionExpression": false,
+                "FunctionExpression": false
+            }
+        }],
+        "object-curly-spacing": ["error", "always"],
+        "new-cap": ["error", { "capIsNew": false }]
     }
 }

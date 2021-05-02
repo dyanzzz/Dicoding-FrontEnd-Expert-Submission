@@ -56,7 +56,8 @@ body {
 	background-color: transparent;
 	border: none;
 	font-size: 18px;
-	padding: 8px;
+	min-width: 44px;
+	min-height: 44px;
 	cursor: pointer;
 }
 
@@ -89,12 +90,19 @@ body {
 }
  
 .app-bar .app-bar__navigation ul li a {
-  display: inline-block;
+  /*
+	display: inline-block;
+	padding: 8px;
+	margin-bottom: 5px;
+	*/
+	display: flex;
   text-decoration: none;
   color: black;
-  padding: 8px;
-  margin-bottom: 5px;
   width: 100%;
+	min-height: 44px;
+	min-width: 44px;
+	align-items: center;
+	
 }
 
 .app-bar .app-bar__navigation ul li a:hover {
@@ -145,14 +153,13 @@ body {
 * main
 */
 main {
-	padding: 0px 32px;
 	flex: 1;
 }
 
 main .head, .content {
 	width: 100%;
 	margin: 0 auto;
-	padding-top: 10px;
+	padding: 10px 32px 0px 32px;
 }
 
 /*
@@ -214,6 +221,8 @@ main .head, .content {
 	border-radius: 5px;
 	background-color: #344955;
 	transition: opacity 0.3s;
+	min-height: 44px;
+	min-width: 44px;
 }
 
 .headline__button:hover {
@@ -288,11 +297,13 @@ main .head, .content {
 }
 
 .post-item__title {
-	text-decoration: none;
 	font-weight: 500;
 	font-size: 18px;
 	margin-top: 5px;
 	transition: 0.3s opacity;
+	box-sizing: border-box;
+	min-height: 44px;
+	min-width: 44px;
 }
 
 .post-item__title:hover {
@@ -301,13 +312,25 @@ main .head, .content {
 	color: #FAAB1A;
 }
 
-.post-item__title a {
+.post-item__title__anchor {
 	text-decoration: none;
 	color: inherit;
+	min-height: 44px;
+	min-width: 44px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+
+.post-item__title__anchor:hover {
+	opacity: 0.5;
+	cursor: pointer;
+	color: #FAAB1A;
 }
 
 .post-item__description {
-	margin-top: 16px;
+	/*margin-top: 16px;*/
 	font-size: 14px;
 	line-height: 1.5em;
 }
@@ -323,6 +346,7 @@ main .head, .content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px 16px;
+	padding: 32px;
 }
  
 .restaurant .restaurant__poster {
@@ -484,6 +508,9 @@ input[type=button] {
   border-radius: 4px;
   cursor: pointer;
   float: right;
+	min-height: 44px;
+	min-width: 44px;
+	box-sizing: border-box;
 }
 
 input[type=button]:hover {

@@ -15,15 +15,14 @@ class RestaurantResource {
 
 	static async reviewRestaurant(data) {
 		const response = await fetch(API_ENDPOINT.REVIEW, {
-			method: "post",
+			method: 'post',
 			headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': CONFIG.KEY,
-      },
+				'Content-Type': 'application/json',
+				'X-Auth-Token': CONFIG.KEY,
+			},
 			body: JSON.stringify(data),
 		});
 		return response;
-
 	}
 }
 

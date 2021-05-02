@@ -1,7 +1,7 @@
-import FavoriteRestaurantIdb from "../data/favoriterestaurant-idb";
+import FavoriteRestaurantIdb from '../data/favoriterestaurant-idb';
 import NotificationHelper from './notification-helper';
-import CONFIG from "../globals/config"
-import { createLikeButtonTemplate, createLikedButtonTemplate } from "../views/templates/template-creator";
+import CONFIG from '../globals/config';
+import { createLikeButtonTemplate, createLikedButtonTemplate } from '../views/templates/template-creator';
 
 const LikeButtonInitiator = {
 	async init({ likeButtonContainer, restaurant }) {
@@ -14,7 +14,7 @@ const LikeButtonInitiator = {
 	async _renderButton() {
 		const { id } = this._restaurant;
 
-		if(await this._isRestaurantExist(id)) {
+		if (await this._isRestaurantExist(id)) {
 			this._renderLiked();
 		} else {
 			this._renderLike();
@@ -32,7 +32,7 @@ const LikeButtonInitiator = {
 		const likeButton = document.querySelector('#likeButton');
 		likeButton.addEventListener('click', async () => {
 			await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
-			this._onMessageHandler(this._restaurant, "like");
+			this._onMessageHandler(this._restaurant, 'like');
 			this._renderButton();
 		});
 	},
@@ -43,20 +43,20 @@ const LikeButtonInitiator = {
 		const likeButton = document.querySelector('#likeButton');
 		likeButton.addEventListener('click', async () => {
 			await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
-			this._onMessageHandler(this._restaurant, "don't like");
+			this._onMessageHandler(this._restaurant, 'dont like');
 			this._renderButton();
 		});
 	},
 
 	_onMessageHandler(restaurant, event) {
-    NotificationHelper.sendNotification({
-      title: `I ${event} restaurant ${restaurant.name}`,
-      options: {
-        body: restaurant.description,
-        image: `${CONFIG.BASE_IMAGE_M_URL + '/' + restaurant.pictureId}`,
-      },
-    });
-  },
+		NotificationHelper.sendNotification({
+			title: `I ${event} restaurant ${restaurant.name}`,
+			options: {
+				body: restaurant.description,
+				image: `${CONFIG.BASE_IMAGE_M_URL + '/' + restaurant.pictureId}`,
+			},
+		});
+	},
 
 };
 

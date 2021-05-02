@@ -1,13 +1,13 @@
 const NotificationHelper = {
-	init(){
+	init() {
 		// check availability
-		if(!this._checkAvailability()) {
+		if (!this._checkAvailability()) {
 			console.log('##### => Notification not supported in this browser');
 			return;
 		}
 
 		// check permission. if not granted, send request
-		if(!this._checkPermission()){
+		if (!this._checkPermission()) {
 			console.log('##### => User did not yet granted permission');
 			this._requestPermission();
 			return;
@@ -16,13 +16,13 @@ const NotificationHelper = {
 
 	sendNotification({ title, options }) {
 		// check availability
-		if(!this._checkAvailability()) {
+		if (!this._checkAvailability()) {
 			console.log('##### => Notification not supported in this browser');
 			return;
 		}
 
 		// check permission. if not granted, send request
-		if(!this._checkPermission()){
+		if (!this._checkPermission()) {
 			console.log('##### => User did not yet granted permission');
 			this._requestPermission();
 			return;
@@ -30,7 +30,6 @@ const NotificationHelper = {
 
 		// show notification
 		this._showNotification({ title, options });
-
 	},
 
 	_checkAvailability() {
@@ -44,25 +43,24 @@ const NotificationHelper = {
 	async _requestPermission() {
 		const status = await Notification.requestPermission();
 
-		if(status === 'denied'){
+		if (status === 'denied') {
 			console.log('##### => Notification Denied');
 		}
 
-		if(status === 'default'){
+		if (status === 'default') {
 			console.log('##### => Permission closed');
 		}
-		
-		if(status === 'granted'){
+
+		if (status === 'granted') {
 			console.log('##### => Permission granted');
 		}
-
 	},
 
 	async _showNotification({ title, options }) {
-		console.log("##### => show notification");
-		
+		console.log('##### => show notification');
+
 		const serviceWorkerRegistration = await navigator.serviceWorker.ready;
-    serviceWorkerRegistration.showNotification(title, options);
+		serviceWorkerRegistration.showNotification(title, options);
 	},
 
 };

@@ -58,17 +58,15 @@ const Main = {
 	},
 
 	async afterRender() {
-		
 		const restaurants = await RestaurantResource.main();
-		console.log(restaurants)
-		
+		console.log(restaurants);
+
 		const restaurantContainer = document.querySelector('.posts');
 		restaurants.forEach((restaurant) => {
 			restaurantContainer.innerHTML += createLatestContent(restaurant);
 		});
-		
 	},
-	
+
 };
 
 export default Main;
