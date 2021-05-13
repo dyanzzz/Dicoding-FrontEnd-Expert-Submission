@@ -1,6 +1,6 @@
 {
-	"name": "QBites",
-	"short_name": "Quick Bites",
+	"name": "Quick Bites",
+	"short_name": "QBites",
 	"description": "Free Restaurant Apps for you",
 	"start_url": "/index.html",
 	"display": "standalone",
