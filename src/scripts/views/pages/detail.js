@@ -3,6 +3,7 @@ import RestaurantDbSource from '../../data/restaurant-source';
 import { createLikeButtonTemplate, createDetailPostContent, createDetailPostContentOverview, createFormReview } from '../templates/template-creator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 import PostReviewButtonInitiator from '../../utils/post-review-button-initiator';
+import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 
 const Detail = {
 	async render() {
@@ -34,7 +35,8 @@ const Detail = {
 		likeButtonContainer.innerHTML = createLikeButtonTemplate();
 
 		LikeButtonInitiator.init({
-			likeButtonContainer,
+			likeButtonContainer: likeButtonContainer,
+			favoriteRestaurants: FavoriteRestaurantIdb,
 			restaurant: {
 				id: getObjectRestaurant.id,
 				name: getObjectRestaurant.name,
