@@ -5,6 +5,10 @@
 
 @media screen and (max-width: 559px) {
 	
+	.hero {
+		background-image: url("../../images/heros/hero-image_2-small.jpg");
+	}
+	
 	.headline__content {
 		padding: 1px 1px;
 	}

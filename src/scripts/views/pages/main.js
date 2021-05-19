@@ -18,7 +18,13 @@ const Main = {
 			<div class="head">
 				<article class="headline">
 					<figure class="headline__figure">
-						<img src="images/headline/restaurant.png" alt="">
+						
+						<picture>
+							<source type="image/webp" srcset="./images/headline/restaurant.webp">
+							<source type="image/jpeg" srcset="./images/headline/restaurant.png">
+							<img width="100%" height="100%" src="./images/headline/restaurant.png" alt="restaurant">
+						</picture>
+						
 					</figure>
 					<div class="headline__content">
 						<h1 class="headline__title">
@@ -32,7 +38,13 @@ const Main = {
 				</article>
 				<article class="headline">
 					<figure class="headline__figure">
-						<img src="images/headline/food.png" alt="">
+
+						<picture>
+							<source type="image/webp" srcset="./images/headline/food.webp">
+							<source type="image/jpeg" srcset="./images/headline/food.png">
+							<img width="100%" height="100%" src="./images/headline/food.png" alt="food">
+						</picture>
+
 					</figure>
 					<div class="headline__content">
 						<h1 class="headline__title">
