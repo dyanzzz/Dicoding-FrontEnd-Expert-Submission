@@ -9,15 +9,26 @@ const Favorite = {
 				<div id="posts" class="posts">
 				
 				</div>
+				<div id="posts-not-found" class="posts-not-found">
+					<center><h2>Favorite restaurant not found</h2></center>
+				</div>
 			</div>
 		`;
 	},
 
 	async afterRender() {
 		const resturants = await FavoriteRestaurantIdb.getAllRestaurants();
-		const resturantsContainer = document.querySelector('.posts');
+		const restaurantsContainer = document.querySelector('.posts');
+		const restaurantsNotFoundContainer = document.querySelector('.posts-not-found');
 		resturants.forEach((resturant) => {
-			resturantsContainer.innerHTML += createLatestContent(resturant);
+			if (resturant) {
+				restaurantsContainer.style.visibility = "visible";
+				restaurantsNotFoundContainer.style.visibility = "hidden";
+				restaurantsContainer.innerHTML += createLatestContent(resturant);
+			} else {
+				restaurantsContainer.style.visibility = "hidden";
+				restaurantsNotFoundContainer.style.visibility = "visible";
+			}
 		});
 	},
 

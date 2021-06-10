@@ -8,7 +8,7 @@ function limitDescription(text, count) {
 
 const createLatestContent = (restaurant) => `
 	<article class="post-item">
-		<img class="post-item__thumbnail lazyload" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_S_URL + '/' + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}">
+		<img class="post-item__thumbnail lazyload" data-src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_S_URL + '/' + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}">
 		<div class="post-item__content">
 			<div class="post-item__tag">
 				<div class="post-item__rate">Rate ${restaurant.rating}</div>

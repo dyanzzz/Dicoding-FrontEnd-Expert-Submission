@@ -2,8 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
-const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
-const ImageminMozjpeg = require('imagemin-mozjpeg');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -11,6 +10,29 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 	},
+	optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 70000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
 	module: {
 		rules: [
 			{
@@ -52,16 +74,9 @@ module.exports = {
 		new ServiceWorkerWebpackPlugin({
 			entry: path.resolve(__dirname, 'src/scripts/sw.js'),
 		}),
-		
-		/*new ImageminWebpackPlugin({
-			//test: /\.(jpe?g|png)$/i, //lakukan testing pada ektensi .jpg .jpeg .png
-  		//pngquant: {quality: '50-50'}, //lakukan kompresi pada file .png dengan kualitas 50-50 %
-      plugins: [
-        ImageminMozjpeg({	//plugin untuk kompresi .jpg dan .jpeg dengan kualitas 50%
-          quality: 80,
-          progressive: true,
-        }),
-      ],
-    }),*/
+		new BundleAnalyzerPlugin({
+			analyzerMode: "static", 
+			openAnalyzer: false
+})
 	],
 };
